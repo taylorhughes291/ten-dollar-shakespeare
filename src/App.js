@@ -1,4 +1,4 @@
-import './App.css';
+import './App.sass';
 import {useState, useEffect} from "react"
 import {Routes, Route} from "react-router-dom"
 import Nav from './components/nav'
@@ -62,49 +62,51 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Ten Dollar Shakespeare</h1>
       <Nav 
         entries={entries.slice(0, 5)}
         upcoming={upcoming.slice(0,5)}
-      />
-      <Routes>
-        <Route 
-          path="/"
-          key="no-path"
-          element={
-            <Home />
-          }
-        >
-        </Route>
-        <Route
-          path="/postlist"
-          element = {
-            <PostList />
-          }
-        >
-        </Route>
-        <Route
-          path="/post/:id"
-          element = {
-            <Post />
-          }
-        >
-        </Route>
-        <Route
-          path="/upcoming"
-          element = {
-            <PostList />
-          }
-        >
-        </Route>
-        <Route
-          path="/about"
-          element = {
-            <About />
-          }
-        >
-        </Route>
-      </Routes>
+        />
+      <div id='body'>
+        <h1>Ten Dollar Shakespeare</h1>
+        <Routes>
+          <Route 
+            path="/"
+            key="no-path"
+            element={
+              <Home />
+            }
+          >
+          </Route>
+          <Route
+            path="/postlist"
+            element = {
+              <PostList />
+            }
+          >
+          </Route>
+          <Route
+            path="/post/:id"
+            element = {
+              <Post />
+            }
+          >
+          </Route>
+          <Route
+            path="/upcoming"
+            element = {
+              <PostList />
+            }
+          >
+          </Route>
+          <Route
+            path="/about"
+            element = {
+              <About />
+            }
+          >
+          </Route>
+        </Routes>
+      </div>
     </div>
   );
 }
