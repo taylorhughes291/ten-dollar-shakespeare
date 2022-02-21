@@ -16,5 +16,44 @@ $black: #312B3B
   border-right: solid 1px red
   background-color: $red
   height: 100vh
+  z-index: 2
 
   #full-menu
+    width: 200px
+    padding: 15px 0 0
+
+    ul
+      padding: 0
+
+      a:hover, a:visited, a:link, a:active
+        text-decoration: none
+        color: $black
+
+      li
+        list-style: none
+        // margin-bottom: 3px
+        text-align: left
+        vertical-align: middle
+        
+        .full-item, .sub-menu-item
+          background-color: $pink
+          // border: 1px solid $black
+          height: 40px
+          transform: rotate(10deg)
+          clip-path: polygon(0% 0%, 96.7% 0%, 100% 100%, 3.3% 100%)
+          
+          margin-bottom: 3px
+          padding: 0 10px
+
+        .full-item
+          display: flex
+          align-items: center
+
+        .sub-menu-item
+          
+
+
+#body
+  position: absolute
+  left: 55px
+  z-index: 1

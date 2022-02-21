@@ -22,7 +22,7 @@ const Nav = (props) => {
                 key={index}
             >
                 <li 
-                    className='sub-menu'
+                    className='sub-menu-item'
                 >{item.fields.title}</li>
             </Link>
         )
@@ -34,7 +34,7 @@ const Nav = (props) => {
                 key={index}
             >
                 <li 
-                    className='sub-menu'
+                    className='sub-menu-item'
                 >{item.fields.title}</li>
             </Link>
         )
@@ -75,17 +75,28 @@ const Nav = (props) => {
                 id='full-menu'
                 class={visible ? '' : 'hidden' }
             >
-                <ul>
+                <ul id='all-menu'>
                     <Link
                         to='/'
                     >
-                        <li className='menu=item'>Home</li>
+                        <li 
+                            className='menu-item'
+                        >
+                            <div className='full-item'>
+                                Home
+                            </div>
+                        </li>
                     </Link>
                     <Link
                         to='/postlist'
                     >
-                        <li className='menu=item'>Posts
-                            <ul>
+                        <li className='menu-item'>
+                            <div className='full-item'>
+                                Posts
+                            </div>
+                            <ul 
+                                id='sub-menu'
+                            >
                                 {subEntries}
                             </ul>
                         </li>
@@ -93,8 +104,13 @@ const Nav = (props) => {
                     <Link
                         to='/upcoming'
                     >
-                        <li className='menu=item'>Upcoming
-                            <ul>
+                        <li className='menu-item'>
+                            <div className='full-item'>
+                                Upcoming
+                            </div>
+                            <ul
+                                id='sub-menu'
+                            >
                                 {subUpcoming}
                             </ul>
                         </li>
@@ -102,7 +118,13 @@ const Nav = (props) => {
                     <Link
                         to='/about'
                     >
-                    <li className='menu=item'>About</li>
+                    <li className='menu-item'>
+                        <div 
+                            className='full-item'
+                        >
+                            About
+                        </div>
+                    </li>
                     </Link>
                 </ul>
             </div>
