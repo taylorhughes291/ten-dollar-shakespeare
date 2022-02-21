@@ -1,6 +1,6 @@
 import React from "react"
 
-const Home = (props) => {
+const About = (props) => {
 
     /////////////////////////////
     // Constants
@@ -18,8 +18,8 @@ const Home = (props) => {
     /////////////////////////////
 
     return (
-        <h2>This is the Home Page</h2>
+        <h2>This is the About Page</h2>
     )
 }
 
-export default Home
+export default About
