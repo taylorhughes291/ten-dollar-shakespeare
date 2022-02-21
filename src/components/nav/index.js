@@ -11,14 +11,30 @@ const Nav = (props) => {
     // Functions
     /////////////////////////////
 
-
+    // TODO: Distribute upcoming and past entries.
+    const subMenu = props.entries.map((item, index) => {
+        return (
+            <li class='sub-menu'>{item.fields.title}</li>
+        )
+    })
 
     /////////////////////////////
     // Render
     /////////////////////////////
 
     return (
-        <h2>This is the Nav Component</h2>
+        <div id='nav'>
+            <ul>
+                <li className='menu=item'>Home</li>
+                <li className='menu=item'>Posts
+                    <ul>
+                        {subMenu}
+                    </ul>
+                </li>
+                <li className='menu=item'>Upcoming</li>
+                <li className='menu=item'>About</li>
+            </ul>
+        </div>
     )
 }
 
