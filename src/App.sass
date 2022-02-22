@@ -10,17 +10,29 @@ $black: #312B3B
 /////// Ubiquitous States
 .hidden
   display: none
-  
+
+.scroll-menu
+  transform: translateX(0px)
+
+.scroll-back-menu
+  transform: translateX(-252px)
+
+//////// Layouts and Styles  
 .App
   display: flex
 
 #nav
-  padding: 20px 3px
+  padding: 20px 10px
   border-right: solid 1px red
   background-color: $red
   height: 100vh
   z-index: 2
   font-family: $grenze
+  transition: 0.6s ease-out
+
+  .bars, .close
+    position: fixed
+    right: 10px
 
   #full-menu
     width: 280px

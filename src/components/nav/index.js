@@ -1,8 +1,8 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faBars } from '@fortawesome/free-solid-svg-icons'
-import dateFormat, {masks} from 'dateformat'
+import { faX, faBars, faTruckLoading } from '@fortawesome/free-solid-svg-icons'
+import dateFormat from 'dateformat'
 
 const Nav = (props) => {
 
@@ -11,6 +11,7 @@ const Nav = (props) => {
     /////////////////////////////
 
     const [visible, setVisible] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     /////////////////////////////
     // Functions
@@ -67,94 +68,112 @@ const Nav = (props) => {
     // Render
     /////////////////////////////
 
-    return (
-        <div id='nav'>
+    useEffect(() => {
+        if (!visible) {
+            setIsLoaded(true)
+        }
+    }, [])
+
+    const loaded = () => {
+        return (
             <div 
-                id='mobile-nav'
-                onClick={toggleMenu}
+                id='nav'
+                className={visible ? 'scroll-menu' : 'scroll-back-menu'}
             >
-                <FontAwesomeIcon 
-                    className={visible ? 'hidden' : ''}
-                    color='#FAC8C6'
-                    icon={faBars} 
-                    size="2x"
-                />
-                <FontAwesomeIcon
-                    className={visible ? '' : 'hidden'}
-                    icon={faX}
-                    color='#FAC8C6'
-                    size='2x'
-                />
-            </div>
-            <div 
-                id='full-menu'
-                class={visible ? '' : 'hidden' }
-            >
-                <ul id='all-menu'>
-                    <Link
-                        to='/'
-                    >
-                        <li 
-                            className='menu-item'
+                <div 
+                    id='mobile-nav'
+                    onClick={toggleMenu}
+                >
+                    <FontAwesomeIcon 
+                        className={visible ? 'hidden bars' : 'bars'}
+                        color='#FAC8C6'
+                        icon={faBars} 
+                        size="2x"
+                    />
+                    <FontAwesomeIcon
+                        className={visible ? 'close' : 'hidden close'}
+                        icon={faX}
+                        color='#FAC8C6'
+                        size='2x'
+                    />
+                </div>
+                <div 
+                    id='full-menu'
+                >
+                    <ul id='all-menu'>
+                        <Link
+                            to='/'
                         >
-                            <div className='item-wrapper'>
-                                <div className='full-item'>
-                                    Home
+                            <li 
+                                className='menu-item'
+                            >
+                                <div className='item-wrapper'>
+                                    <div className='full-item'>
+                                        Home
+                                    </div>
+                                    <div className='menu-background'></div>
                                 </div>
-                                <div className='menu-background'></div>
-                            </div>
-                        </li>
-                    </Link>
-                    <Link
-                        to='/postlist'
-                    >
+                            </li>
+                        </Link>
+                        <Link
+                            to='/postlist'
+                        >
+                            <li className='menu-item'>
+                                <div className='item-wrapper'>
+                                    <div className='full-item'>
+                                        Posts
+                                    </div>
+                                    <div className='menu-background'></div>
+                                </div>
+                                <ul 
+                                    id='sub-menu'
+                                >
+                                    {subEntries}
+                                </ul>
+                            </li>
+                        </Link>
+                        <Link
+                            to='/upcoming'
+                        >
+                            <li className='menu-item'>
+                                <div className='item-wrapper'>
+                                    <div className='full-item'>
+                                        Upcoming
+                                    </div>
+                                    <div className='menu-background'></div>
+                                </div>
+                                <ul
+                                    id='sub-menu'
+                                >
+                                    {subUpcoming}
+                                </ul>
+                            </li>
+                        </Link>
+                        <Link
+                            to='/about'
+                        >
                         <li className='menu-item'>
                             <div className='item-wrapper'>
-                                <div className='full-item'>
-                                    Posts
+                                    <div className='full-item'>
+                                        About
+                                    </div>
+                                    <div className='menu-background'></div>
                                 </div>
-                                <div className='menu-background'></div>
-                            </div>
-                            <ul 
-                                id='sub-menu'
-                            >
-                                {subEntries}
-                            </ul>
                         </li>
-                    </Link>
-                    <Link
-                        to='/upcoming'
-                    >
-                        <li className='menu-item'>
-                            <div className='item-wrapper'>
-                                <div className='full-item'>
-                                    Upcoming
-                                </div>
-                                <div className='menu-background'></div>
-                            </div>
-                            <ul
-                                id='sub-menu'
-                            >
-                                {subUpcoming}
-                            </ul>
-                        </li>
-                    </Link>
-                    <Link
-                        to='/about'
-                    >
-                    <li className='menu-item'>
-                        <div className='item-wrapper'>
-                                <div className='full-item'>
-                                    About
-                                </div>
-                                <div className='menu-background'></div>
-                            </div>
-                    </li>
-                    </Link>
-                </ul>
+                        </Link>
+                    </ul>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } 
+
+    const loading = () => {
+        return (
+            <h2>Loading...</h2>
+        )
+    }
+
+    return isLoaded ? loaded() : loading()
 }
 
 export default Nav
