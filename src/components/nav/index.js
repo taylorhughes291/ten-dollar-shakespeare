@@ -23,7 +23,14 @@ const Nav = (props) => {
             >
                 <li 
                     className='sub-menu-item'
-                >{item.fields.title}</li>
+                >
+                    <div className='item-wrapper'>
+                        <div className='sub-item'>
+                            {item.fields.title}
+                        </div>
+                        <div className='menu-background'></div>
+                    </div>
+                </li>
             </Link>
         )
     })
@@ -35,7 +42,14 @@ const Nav = (props) => {
             >
                 <li 
                     className='sub-menu-item'
-                >{item.fields.title}</li>
+                >
+                    <div className='item-wrapper'>
+                        <div className='sub-item'>
+                            {item.fields.title}
+                        </div>
+                        <div className='menu-background'></div>
+                    </div>
+                </li>
             </Link>
         )
     })
@@ -82,8 +96,11 @@ const Nav = (props) => {
                         <li 
                             className='menu-item'
                         >
-                            <div className='full-item'>
-                                Home
+                            <div className='item-wrapper'>
+                                <div className='full-item'>
+                                    Home
+                                </div>
+                                <div className='menu-background'></div>
                             </div>
                         </li>
                     </Link>
@@ -91,8 +108,11 @@ const Nav = (props) => {
                         to='/postlist'
                     >
                         <li className='menu-item'>
-                            <div className='full-item'>
-                                Posts
+                            <div className='item-wrapper'>
+                                <div className='full-item'>
+                                    Posts
+                                </div>
+                                <div className='menu-background'></div>
                             </div>
                             <ul 
                                 id='sub-menu'
@@ -105,8 +125,11 @@ const Nav = (props) => {
                         to='/upcoming'
                     >
                         <li className='menu-item'>
-                            <div className='full-item'>
-                                Upcoming
+                            <div className='item-wrapper'>
+                                <div className='full-item'>
+                                    Upcoming
+                                </div>
+                                <div className='menu-background'></div>
                             </div>
                             <ul
                                 id='sub-menu'
@@ -119,11 +142,12 @@ const Nav = (props) => {
                         to='/about'
                     >
                     <li className='menu-item'>
-                        <div 
-                            className='full-item'
-                        >
-                            About
-                        </div>
+                        <div className='item-wrapper'>
+                                <div className='full-item'>
+                                    About
+                                </div>
+                                <div className='menu-background'></div>
+                            </div>
                     </li>
                     </Link>
                 </ul>
