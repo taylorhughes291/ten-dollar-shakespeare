@@ -17,6 +17,12 @@ $black: #312B3B
 .scroll-back-menu
   transform: translateX(-252px)
 
+.fade
+  opacity: 0
+
+.fade-reverse
+  opacity: 1
+
 //////// Layouts and Styles  
 .App
   display: flex
@@ -29,6 +35,16 @@ $black: #312B3B
   z-index: 2
   font-family: $grenze
   transition: 0.6s ease-out
+
+  #blocker
+    width: 300px
+    height: 100vh
+    background-color: $red
+    position: absolute
+    right: 10px
+    z-index: 4
+    transition: opacity 1s
+    clip-path: polygon(0% 0%, 100% calc(0% + 45px), 100% 100%, 0% 100%)
 
   .bars, .close
     position: fixed

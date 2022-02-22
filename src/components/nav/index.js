@@ -81,6 +81,10 @@ const Nav = (props) => {
                 className={visible ? 'scroll-menu' : 'scroll-back-menu'}
             >
                 <div 
+                    id='blocker'
+                    className={visible ? 'fade' : 'fade-reverse'}
+                ></div>
+                <div 
                     id='mobile-nav'
                     onClick={toggleMenu}
                 >
