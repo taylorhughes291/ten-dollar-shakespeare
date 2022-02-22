@@ -15,7 +15,9 @@ const Home = (props) => {
 
     const recentPosts = props.entries.map((item, index) => {
         return (
-            <li>
+            <li
+                key={index}
+            >
                 <Link
                     to={'/post/' + item.sys.id}
                 >

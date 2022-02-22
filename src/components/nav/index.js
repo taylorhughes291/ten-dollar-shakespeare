@@ -22,6 +22,7 @@ const Nav = (props) => {
             <Link
                 to={'/post/' + item.sys.id}
                 key={index}
+                onClick={toggleMenu}
             >
                 <li 
                     className='sub-menu-item'
@@ -41,6 +42,7 @@ const Nav = (props) => {
             <Link
                 to={'/post/' + item.sys.id}
                 key={index}
+                onClick={toggleMenu}
             >
                 <li 
                     className='sub-menu-item'
@@ -56,7 +58,7 @@ const Nav = (props) => {
         )
     })
 
-    const toggleMenu = () => {
+    function toggleMenu() {
         if (visible) {
             setVisible(false)
         } else {
@@ -105,66 +107,70 @@ const Nav = (props) => {
                     id='full-menu'
                 >
                     <ul id='all-menu'>
-                            <li 
-                                className='menu-item'
-                            >
-                                <div className='item-wrapper'>
-                                    <Link
-                                        to='/'
-                                    >
-                                        <div className='full-item'>
-                                            Home
-                                        </div>
-                                    </Link>
-                                    <div className='menu-background'></div>
-                                </div>
-                            </li>
-                        <Link
-                            to='/postlist'
+                        <li 
+                            className='menu-item'
                         >
-                            <li className='menu-item'>
-                                <div className='item-wrapper'>
+                            <div className='item-wrapper'>
+                            <Link
+                                to='/'
+                                onClick={toggleMenu}
+                            >
+                                <div className='full-item'>
+                                    Home
+                                </div>
+                                <div className='menu-background'></div>
+                            </Link>
+                            </div>
+                        </li>
+                        <li className='menu-item'>
+                            <div className='item-wrapper'>
+                                <Link
+                                    to='/postlist'
+                                    onClick={toggleMenu}
+                                >
                                     <div className='full-item'>
                                         Posts
                                     </div>
                                     <div className='menu-background'></div>
-                                </div>
-                                <ul 
-                                    id='sub-menu'
+                                </Link>
+                            </div>
+                            <ul 
+                                id='sub-menu'
+                            >
+                                {subEntries}
+                            </ul>
+                        </li>
+                        <li className='menu-item'>
+                            <div className='item-wrapper'>
+                                <Link
+                                    to='/upcoming'
+                                    onClick={toggleMenu}
                                 >
-                                    {subEntries}
-                                </ul>
-                            </li>
-                        </Link>
-                        <Link
-                            to='/upcoming'
-                        >
-                            <li className='menu-item'>
-                                <div className='item-wrapper'>
                                     <div className='full-item'>
                                         Upcoming
                                     </div>
                                     <div className='menu-background'></div>
-                                </div>
-                                <ul
-                                    id='sub-menu'
-                                >
-                                    {subUpcoming}
-                                </ul>
-                            </li>
-                        </Link>
-                        <Link
-                            to='/about'
-                        >
+                                </Link>
+                            </div>
+                            <ul
+                                id='sub-menu'
+                            >
+                                {subUpcoming}
+                            </ul>
+                        </li>
                         <li className='menu-item'>
                             <div className='item-wrapper'>
+                                <Link
+                                    to='/about'
+                                    onClick={toggleMenu}
+                                >
                                     <div className='full-item'>
                                         About
                                     </div>
                                     <div className='menu-background'></div>
-                                </div>
+                                </Link>
+                            </div>
                         </li>
-                        </Link>
                     </ul>
                 </div>
             </div>
