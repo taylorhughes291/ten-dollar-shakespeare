@@ -67,7 +67,7 @@ function App() {
         upcoming={upcoming.slice(0,5)}
         />
       <div id='body'>
-        <h1>Ten Dollar Shakespeare</h1>
+        <h1 id='headline'>Ten Dollar Shakespeare</h1>
         <Routes>
           <Route 
             path="/"

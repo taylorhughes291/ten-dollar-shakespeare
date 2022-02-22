@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react"
 import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faBars, faTruckLoading } from '@fortawesome/free-solid-svg-icons'
+import { faX, faBars } from '@fortawesome/free-solid-svg-icons'
 import dateFormat from 'dateformat'
 
 const Nav = (props) => {

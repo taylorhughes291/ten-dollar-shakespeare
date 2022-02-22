@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100;200;400&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100;200;400&family=Kings&display=swap')
 
 $grenze: 'Grenze Gotisch', cursive
+$kings: 'Kings', cursive
 $red: #E11A14
 $pink: #FAC8C6
 $blue: #B3D5F9
@@ -26,6 +27,11 @@ $black: #312B3B
 //////// Layouts and Styles  
 .App
   display: flex
+  justify-content: flex-start
+  background-color: $pink
+
+  #headline
+    margin: 10px 5px
 
 #nav
   padding: 20px 10px
@@ -35,6 +41,7 @@ $black: #312B3B
   z-index: 2
   font-family: $grenze
   transition: 0.6s ease-out
+  position: fixed
 
   #blocker
     width: 300px
@@ -125,3 +132,26 @@ $black: #312B3B
   position: absolute
   left: 55px
   z-index: 1
+  color: $black
+
+  h1, h2, h3, h4
+    font-family: $grenze
+    margin: 0
+
+  #home
+
+    #hook, #recent, #upcoming
+      padding: 0 10px 0 10px
+      border: 1px solid $black
+      margin: 0 10px 10px 0
+      border-radius: 5px
+      background-color: $blue
+
+      .home-title
+        margin: 8px 0
+
+      img
+        max-width: 100%
+
+    #recent
+      background-color: $yellow
