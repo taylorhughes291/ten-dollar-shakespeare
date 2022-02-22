@@ -83,7 +83,10 @@ function App() {
           <Route
             path="/postlist"
             element = {
-              <PostList />
+              <PostList 
+                entries={entries}
+                type='posts'
+              />
             }
           >
           </Route>
@@ -97,7 +100,10 @@ function App() {
           <Route
             path="/upcoming"
             element = {
-              <PostList />
+              <PostList 
+                entries={upcoming}
+                type='upcoming'
+              />
             }
           >
           </Route>
