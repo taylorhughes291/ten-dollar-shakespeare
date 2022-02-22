@@ -2,6 +2,7 @@ import {useState} from "react"
 import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faBars } from '@fortawesome/free-solid-svg-icons'
+import dateFormat, {masks} from 'dateformat'
 
 const Nav = (props) => {
 
@@ -26,7 +27,7 @@ const Nav = (props) => {
                 >
                     <div className='item-wrapper'>
                         <div className='sub-item'>
-                            {item.fields.title}
+                        {dateFormat(item.fields.dateOfProduction, "m/d/yy") + ' - ' + item.fields.title}
                         </div>
                         <div className='menu-background'></div>
                     </div>
@@ -45,7 +46,7 @@ const Nav = (props) => {
                 >
                     <div className='item-wrapper'>
                         <div className='sub-item'>
-                            {item.fields.title}
+                            {dateFormat(item.fields.dateOfProduction, "m/d/yy") + ' - ' + item.fields.title}
                         </div>
                         <div className='menu-background'></div>
                     </div>

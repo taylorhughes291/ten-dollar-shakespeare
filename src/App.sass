@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100;200;400&display=swap')
+
+$grenze: 'Grenze Gotisch', cursive
 $red: #E11A14
 $pink: #FAC8C6
 $blue: #B3D5F9
@@ -17,6 +20,7 @@ $black: #312B3B
   background-color: $red
   height: 100vh
   z-index: 2
+  font-family: $grenze
 
   #full-menu
     width: 230px
@@ -40,17 +44,29 @@ $black: #312B3B
           padding: 0 10px
           display: flex
           align-items: center
-          justify-content: center
+          // justify-content: center
           text-align: center
           position: relative
 
         .full-item
           height: 35px
+          font-weight: 400
+          font-size: 27px
           clip-path: polygon(0% 0%, 97.2% 0%, 100% 100%, 2.8% 100%)
 
         .sub-item
-          height: 20px
+          height: 26px
+          font-size: 20px
+          font-weight: 200
           clip-path: polygon(0% 0%, 97.5% 0%, 99% 100%, 1.5% 100%)
+          text-overflow: ellipsis
+          display: -webkit-box
+          -webkit-line-clamp: 1 /* number of lines to show */
+          -webkit-box-orient: vertical
+          -webkit-box-pack: start
+          margin-top: -3px
+          vertical-align: top
+          
 
         .item-wrapper
           position: relative
@@ -60,7 +76,7 @@ $black: #312B3B
           height: 20px
           margin-left: 15px
           margin-top: 3px
-          
+
           .menu-background
             clip-path: polygon(0% 0%, 97.5% 0%, 99% 100%, 1.5% 100%)
 
