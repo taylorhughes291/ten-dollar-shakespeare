@@ -73,7 +73,10 @@ function App() {
             path="/"
             key="no-path"
             element={
-              <Home />
+              <Home 
+                entries={entries.slice(0, 10)}
+                upcoming={upcoming.slice(0,10)}
+              />
             }
           >
           </Route>

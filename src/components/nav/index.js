@@ -105,20 +105,20 @@ const Nav = (props) => {
                     id='full-menu'
                 >
                     <ul id='all-menu'>
-                        <Link
-                            to='/'
-                        >
                             <li 
                                 className='menu-item'
                             >
                                 <div className='item-wrapper'>
-                                    <div className='full-item'>
-                                        Home
-                                    </div>
+                                    <Link
+                                        to='/'
+                                    >
+                                        <div className='full-item'>
+                                            Home
+                                        </div>
+                                    </Link>
                                     <div className='menu-background'></div>
                                 </div>
                             </li>
-                        </Link>
                         <Link
                             to='/postlist'
                         >

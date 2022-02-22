@@ -20,16 +20,20 @@ $black: #312B3B
 
 .fade
   opacity: 0
+  z-index: 0
 
 .fade-reverse
   opacity: 1
+  z-index: 10
 
 //////// Layouts and Styles  
+body
+  background-color: $pink
+
 .App
   display: flex
   justify-content: flex-start
-  background-color: $pink
-
+  
   #headline
     margin: 10px 5px
 
@@ -49,8 +53,7 @@ $black: #312B3B
     background-color: $red
     position: absolute
     right: 10px
-    z-index: 4
-    transition: opacity 1s
+    transition: opacity 1s, z-index 1s
     clip-path: polygon(0% 0%, 100% calc(0% + 45px), 100% 100%, 0% 100%)
 
   .bars, .close
@@ -79,7 +82,6 @@ $black: #312B3B
           padding: 0 10px
           display: flex
           align-items: center
-          // justify-content: center
           text-align: center
           position: relative
 
