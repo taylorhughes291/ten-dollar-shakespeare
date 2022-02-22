@@ -48,7 +48,7 @@ const Home = (props) => {
     return (
         <div id='home'>
             <div id='hook'>
-                <h3 className='home-title'>Welcome as part of the filthy masses</h3>
+                <h3 className='home-title'>Welcome to the filthy masses</h3>
                 <img 
                     src='https://images.unsplash.com/photo-1571668019032-21d13bf2fca3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1144&q=80'
                     alt='street art of william shakespeare with a man playing atuba beside it'
