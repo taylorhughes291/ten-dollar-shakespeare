@@ -93,7 +93,10 @@ function App() {
           <Route
             path="/post/:id"
             element = {
-              <Post />
+              <Post 
+                entries={entries}
+                upcoming={upcoming}
+              />
             }
           >
           </Route>
