@@ -25,13 +25,21 @@ const Post = (props) => {
     /////////////////////////////
 
     const loaded = () => {
-        const paragraphs = selectedPost.fields.content2.content.map((item, index) => {
-            return (
-                <p>
-                    {item.content[0].value}
-                </p>
-            )
-        })
+        const paragraphs = () => {
+            return selectedPost.fields.content2.content.map((item, index) => {
+                return (
+                    <p
+                        key={index}
+                    >
+                        {item.content[0].value}
+                    </p>
+                )
+            })
+        } 
+        const address = selectedPost.fields.address === undefined ? '' : `${selectedPost.fields.address}`
+        const city = selectedPost.fields.city === undefined ? '' : `, ${selectedPost.fields.city}`
+        const state = selectedPost.fields.state === undefined ? '' : `, ${selectedPost.fields.state}`
+        const zip = selectedPost.fields.zip === undefined ? '' : ` ${selectedPost.fields.zip}`
         
         return (
             <div 
@@ -40,8 +48,13 @@ const Post = (props) => {
                 <h2>{`${selectedPost.fields.title}`}</h2>
                 <h3>{selectedPost.fields.productionCompany}</h3>
                 <h3>{dateFormat(selectedPost.fields.dateOfProduction, 'm/d/yyyy, h:MM tt')}</h3>
+                <div className='info-cont'>
+                    <p>Cost: ${selectedPost.fields.cost}</p>
+                    <p>Location: {address + city + state + zip}</p>
+                </div>
                 <img src={selectedPost.fields.image.fields.file.url} alt={selectedPost.fields.image.fields.description} />
-                {paragraphs}
+                {props.type === 'post' && paragraphs()}
+
             </div>
         )
     } 

@@ -50,7 +50,11 @@ function App() {
       const sortedPosts = posts.sort(function(a,b){
         return new Date(b.fields.dateOfProduction) - new Date(a.fields.dateOfProduction)
       })
-      const sortedUpcoming = upcomingEntries.sort(function(a,b){
+      const sortedUpcoming = upcomingEntries.filter((item, index) => {
+        return (
+          new Date(item.fields.dateOfProduction) > new Date()
+        )
+      }).sort(function(a,b){
         return new Date(a.fields.dateOfProduction) - new Date(b.fields.dateOfProduction)
       })
       
@@ -95,7 +99,7 @@ function App() {
             element = {
               <Post 
                 entries={entries}
-                upcoming={upcoming}
+                type='post'
               />
             }
           >
@@ -104,6 +108,16 @@ function App() {
             path="/upcoming"
             element = {
               <PostList 
+                entries={upcoming}
+                type='upcoming'
+              />
+            }
+          >
+          </Route>
+          <Route
+            path="/upcoming/:id"
+            element = {
+              <Post
                 entries={upcoming}
                 type='upcoming'
               />

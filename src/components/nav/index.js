@@ -40,7 +40,7 @@ const Nav = (props) => {
     const subUpcoming = props.upcoming.map((item, index) => {
         return (
             <Link
-                to={'/post/' + item.sys.id}
+                to={'/upcoming/' + item.sys.id}
                 key={index}
                 onClick={toggleMenu}
             >

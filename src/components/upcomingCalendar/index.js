@@ -25,8 +25,6 @@ const UpcomingCalendar = (props) => {
             )
         })
 
-        console.log(eventCalendar)
-
         return (
             <div>
             <Calendar
