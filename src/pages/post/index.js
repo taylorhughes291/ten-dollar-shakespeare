@@ -36,6 +36,7 @@ const Post = (props) => {
                 )
             })
         } 
+        console.log(selectedPost)
         const address = selectedPost.fields.address === undefined ? '' : `${selectedPost.fields.address}`
         const city = selectedPost.fields.city === undefined ? '' : `, ${selectedPost.fields.city}`
         const state = selectedPost.fields.state === undefined ? '' : `, ${selectedPost.fields.state}`

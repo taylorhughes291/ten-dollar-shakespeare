@@ -30,13 +30,13 @@ const PostList = (props) => {
         }).map((item, index) => {
             const city = item.fields.city === undefined ? '' : `${item.fields.city}`
             const state = item.fields.state === undefined ? '' : `${item.fields.state}`
-            
+            console.log(props.type);
             return (
                 <li
                     key={index}
                 >
                     <Link
-                        to={props.type === 'post' ? '/post/' + item.sys.id : '/upcoming/' + item.sys.id}
+                        to={props.type === 'posts' ? '/post/' + item.sys.id : '/upcoming/' + item.sys.id}
                     >
                         {props.type === 'upcoming' ? 
                             `${dateFormat(item.fields.dateOfProduction, "m/d/yy")} - ${item.fields.title} - ${city}, ${state}` : 
