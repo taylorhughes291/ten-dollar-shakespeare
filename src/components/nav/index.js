@@ -65,7 +65,6 @@ const Nav = (props) => {
             setVisible(true)
         }
 
-        console.log(isNewPage)
         if (isNewPage) {
             window.scrollTo(0, 0)
         }

@@ -60,7 +60,8 @@ const Home = (props) => {
                 <div className='section-header'>
                     <h3 className='home-title'>Recent Posts</h3>
                     <Link
-                        to='/posts'
+                        to='/postList'
+                        onClick={() => {window.scrollTo(0, 0)}}
                     >
                         <p>See All</p>
                     </Link>
@@ -78,6 +79,7 @@ const Home = (props) => {
                     <h3 className='home-title'>Upcoming Productions</h3>
                     <Link
                         to='/upcoming'
+                        onClick={() => {window.scrollTo(0, 0)}}
                     >
                         <p>See All</p>
                     </Link>
