@@ -22,7 +22,7 @@ const Nav = (props) => {
             <Link
                 to={'/post/' + item.sys.id}
                 key={index}
-                onClick={toggleMenu}
+                onClick={() => toggleMenu(true)}
             >
                 <li 
                     className='sub-menu-item'
@@ -42,7 +42,7 @@ const Nav = (props) => {
             <Link
                 to={'/upcoming/' + item.sys.id}
                 key={index}
-                onClick={toggleMenu}
+                onClick={() => toggleMenu(true)}
             >
                 <li 
                     className='sub-menu-item'
@@ -58,11 +58,15 @@ const Nav = (props) => {
         )
     })
 
-    function toggleMenu() {
+    function toggleMenu(isNewPage = false) {
         if (visible) {
             setVisible(false)
         } else {
             setVisible(true)
+        }
+
+        if (isNewPage) {
+            window.scrollTo(0, 0)
         }
     }
 
@@ -88,7 +92,7 @@ const Nav = (props) => {
                 ></div>
                 <div 
                     id='mobile-nav'
-                    onClick={toggleMenu}
+                    onClick={() => toggleMenu()}
                 >
                     <FontAwesomeIcon 
                         className={visible ? 'hidden bars' : 'bars'}
@@ -113,7 +117,7 @@ const Nav = (props) => {
                             <div className='item-wrapper'>
                             <Link
                                 to='/'
-                                onClick={toggleMenu}
+                                onClick={() => toggleMenu(true)}
                             >
                                 <div className='full-item'>
                                     Home
@@ -126,7 +130,7 @@ const Nav = (props) => {
                             <div className='item-wrapper'>
                                 <Link
                                     to='/postlist'
-                                    onClick={toggleMenu}
+                                    onClick={() => toggleMenu(true)}
                                 >
                                     <div className='full-item'>
                                         Posts
@@ -144,7 +148,7 @@ const Nav = (props) => {
                             <div className='item-wrapper'>
                                 <Link
                                     to='/upcoming'
-                                    onClick={toggleMenu}
+                                    onClick={() => toggleMenu(true)}
                                 >
                                     <div className='full-item'>
                                         Upcoming
@@ -162,7 +166,7 @@ const Nav = (props) => {
                             <div className='item-wrapper'>
                                 <Link
                                     to='/about'
-                                    onClick={toggleMenu}
+                                    onClick={() => toggleMenu(true)}
                                 >
                                     <div className='full-item'>
                                         About
