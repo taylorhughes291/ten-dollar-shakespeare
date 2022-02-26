@@ -52,11 +52,10 @@ body
   z-index: 2
   font-family: $grenze
   transition: 0.6s ease-out
-  @media screen and (max-width: $tablet)
-    position: fixed
+  position: fixed
+  // @media screen and (max-width: $tablet)
   @media screen and (min-width: $tablet)
-    position: relative
-    flex: 0 0 240px
+    width: 250px
 
   #blocker
     width: 300px
@@ -150,12 +149,11 @@ body
   max-width: 100%
   z-index: 1
   color: $black
+  position: absolute
   @media screen and (max-width: $tablet)
-    position: absolute
     left: 59px
   @media screen and (min-width: $tablet)
-    position: relative
-    padding-left: 10px
+    left: 281px
 
   h1, h2, h3, h4
     font-family: $grenze
