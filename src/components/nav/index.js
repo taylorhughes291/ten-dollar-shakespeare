@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faBars } from '@fortawesome/free-solid-svg-icons'
 import dateFormat from 'dateformat'
+import { useMediaQuery } from 'react-responsive'
 
 const Nav = (props) => {
 
@@ -12,6 +13,10 @@ const Nav = (props) => {
 
     const [visible, setVisible] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const isTablet = useMediaQuery({
+        query: '(min-width: 768px)'
+      })
 
     /////////////////////////////
     // Functions
@@ -84,11 +89,11 @@ const Nav = (props) => {
         return (
             <div 
                 id='nav'
-                className={visible ? 'scroll-menu' : 'scroll-back-menu'}
+                className={isTablet ? 'scroll-menu' : (visible ? 'scroll-menu' : 'scroll-back-menu')}
             >
                 <div 
                     id='blocker'
-                    className={visible ? 'fade' : 'fade-reverse'}
+                    className={isTablet ? 'fade' : (visible ? 'fade' : 'fade-reverse')}
                 ></div>
                 <div 
                     id='mobile-nav'
