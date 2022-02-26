@@ -52,6 +52,12 @@ const Post = (props) => {
                 <div className='info-cont'>
                     <p>Cost: ${selectedPost.fields.cost}</p>
                     <p>Location: {address + city + state + zip}</p>
+                    {props.type === 'upcoming' && <p>
+                        <a
+                            href={selectedPost.fields.website}
+                            target='_blank'
+                        >Website</a>
+                    </p>}
                 </div>
                 <img src={selectedPost.fields.image.fields.file.url} alt={selectedPost.fields.image.fields.description} />
                 {props.type === 'post' && paragraphs()}
