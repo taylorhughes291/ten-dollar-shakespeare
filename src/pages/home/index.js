@@ -47,7 +47,7 @@ const Home = (props) => {
 
     return (
         <div id='home'>
-            <div id='hook'>
+            <div id='hook' className='home-section'>
                 <h3 className='home-title'>Welcome to the filthy masses</h3>
                 <img 
                     src='https://images.unsplash.com/photo-1571668019032-21d13bf2fca3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1144&q=80'
@@ -56,7 +56,7 @@ const Home = (props) => {
                 <p>Welcome to Ten Dollar Shakespeare! This is a Southern California based blog centered around the appreciation, review, and information distribution of cheap local Shakespeare productions around my area. I will post all upcoming dates in which I will attend, complete with pricing, and upon viewing I will write a quick report about the production and my viewing experience.<br /><br />Long has it been proven that the happiest wine drinkers are those purchasing bottles in the range of $10-$15. As somebody who fits staunchly in that category of wine-drinker I believe that this line of thought could be applied to many other parts of life, including entertainment, and is the inspiration for this page. Thank you for your patronage and enjoy!
 </p>
             </div>
-            <div id='recent'>
+            <div id='recent' className='home-section'>
                 <div className='section-header'>
                     <h3 className='home-title'>Recent Posts</h3>
                     <Link
@@ -74,7 +74,7 @@ const Home = (props) => {
                     {recentPosts}
                 </ul>
             </div>
-            <div id='upcoming'>
+            <div id='upcoming' className='home-section'>
             <div className='section-header'>
                     <h3 className='home-title'>Upcoming Productions</h3>
                     <Link

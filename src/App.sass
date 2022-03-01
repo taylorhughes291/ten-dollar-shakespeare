@@ -12,7 +12,7 @@ $yellow: #F3D053
 $black: #312B3B
 
 $tablet: 767px
-$desktop: 1024px
+$desktop: 1023px
 
 /////// Ubiquitous States
 .hidden
@@ -43,6 +43,8 @@ body
   #headline
     margin: 5px 5px 10px
     font-size: 40px
+    @media screen and (min-width: $desktop)
+      font-size: 50px
 
 #nav
   padding: 20px 10px
@@ -156,19 +158,37 @@ body
     left: 59px
   @media screen and (min-width: $tablet)
     left: 281px
+  @media screen and (min-width: $desktop)
+    max-width: 950px
 
   h1, h2, h3, h4
     font-family: $grenze
     margin: 0
 
   h2
-    font-size: 32px
+    font-size: 36px
 
   h3
-    font-size: 24px
+    font-size: 32px
 
   p, li
     font-family: $lora
+    @media screen and (min-width: $desktop)
+      font-size: 17px
+
+  #home 
+    div.home-section
+      overflow: hidden
+
+    div.home-section:nth-child(odd)
+      img
+        @media screen and (min-width: $desktop)
+          float: left
+
+    div.home-section:nth-child(even) 
+      img
+        @media screen and (min-width: $desktop)
+          float: right
 
   div.info-cont
     margin: 5px 0 15px
@@ -188,18 +208,29 @@ body
 
   #home, #posts, #about
 
-    #hook, #recent, #upcoming, .year-section, .about-section
-      padding: 0 10px 0 10px
+    .home-section, .year-section, .about-section
+      padding: 0 10px 10px
       border: 1px solid $black
       margin: 0 10px 10px 0
       border-radius: 5px
       background-color: $blue
+      @media screen and (min-width: $desktop)
+        padding-bottom: 20px
 
       .home-title
         margin: 8px 0
 
       img
         max-width: 100%
+        @media screen and (min-width: $desktop)
+          max-width: 60%
+          margin: 0 20px 0 0
+      
+      p
+        @media screen and (min-width: $desktop)
+          text-align: justify
+          margin: 0 20px 0 0
+          font-size: 16px
 
       a:hover, a:visited, a:link, a:active
         // text-decoration: none
@@ -220,3 +251,7 @@ body
 
     #calendar
       display: none
+
+  #posts
+    img
+      float: right
