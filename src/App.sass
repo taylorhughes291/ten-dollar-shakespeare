@@ -12,7 +12,7 @@ $yellow: #F3D053
 $black: #312B3B
 
 $tablet: 767px
-$desktop: 1023px
+$desktop: 1024px
 
 /////// Ubiquitous States
 .hidden
@@ -39,54 +39,24 @@ body
 .App
   display: flex
   justify-content: flex-start
-  @media screen and (max-width: $desktop)
-  @media screen and (min-width: $desktop)
-    flex-direction: column
-    max-width: 1300px
   
   #headline
     margin: 5px 5px 10px
     font-size: 40px
 
 #nav
-  font-family: $grenze
+  padding: 20px 10px
+  border-right: solid 1px red
   background-color: $red
+  height: 100vh
   z-index: 2
-  @media screen and (max-width: $desktop)
-    padding: 20px 10px
-    border-right: solid 1px red
-    height: 100vh
-    transition: 0.6s ease-out
-    position: fixed
-    overflow-x: hidden
-    overflow-y: auto
+  font-family: $grenze
+  transition: 0.6s ease-out
+  position: fixed
+  overflow-x: hidden
+  overflow-y: auto
   @media screen and (min-width: $tablet)
     width: 250px
-  @media screen and (min-width: $desktop)
-    max-width: 1300px
-    width: 100%
-    background-color: $red
-    #full-menu 
-      margin-bottom: 0px
-
-      ul#all-menu
-        display: flex
-        justify-content: space-around
-        margin: 0px
-
-      li.menu-item
-        width: 24%
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
-
-        ul.sub-menu
-          display: none
-
-        div.full-item
-          background-color: $yellow
-
-        .menu-background
-          background-color: $black
-
 
   #blocker
     width: 300px
@@ -109,10 +79,7 @@ body
     max-width: 280px
     width: 100%
     padding: 15px 0 0
-    @media screen and (max-width: $desktop)
-      margin-bottom: 60px
-    @media screen and (min-width: $desktop)
-      max-width: none
+    margin-bottom: 60px
 
     ul
       padding: 0
@@ -157,9 +124,7 @@ body
 
         .item-wrapper
           position: relative
-          transform: rotate(10deg)
-          @media screen and (min-width: $desktop)
-            transform: rotate(0deg)
+          transform: rotate(10deg)          
 
         .sub-menu-item
           height: 20px
@@ -183,15 +148,12 @@ body
 
 
 #body
-  @media screen and (max-width: $desktop)
-    max-width: 100%
-    z-index: 1
-    color: $black
-    position: absolute
+  max-width: 100%
+  z-index: 1
+  color: $black
+  position: absolute
   @media screen and (max-width: $tablet)
     left: 59px
-  @media screen and (min-width: $desktop)
-    padding: 0 5px 0 15px
   @media screen and (min-width: $tablet)
     left: 281px
 

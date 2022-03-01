@@ -144,7 +144,7 @@ const Nav = (props) => {
                                 </Link>
                             </div>
                             <ul 
-                                className='sub-menu'
+                                id='sub-menu'
                             >
                                 {subEntries}
                             </ul>
@@ -162,7 +162,7 @@ const Nav = (props) => {
                                 </Link>
                             </div>
                             <ul
-                                className='sub-menu'
+                                id='sub-menu'
                             >
                                 {subUpcoming}
                             </ul>
