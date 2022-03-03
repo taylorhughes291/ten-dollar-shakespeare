@@ -31,14 +31,23 @@ const Home = (props) => {
         const city = item.fields.city === undefined ? '' : `${item.fields.city}`
         const state = item.fields.state === undefined ? '' : `${item.fields.state}`
 
+        let dollarHighlighter = ''
+        if (item.fields.cost <= 10) {
+            dollarHighlighter += 'bold '
+        }
+        if (item.fields.cost === 0) {
+            dollarHighlighter += 'red '
+        }
+
         return (
             <li
                 key={index}
+                className = {item.fields.cost <= 10 ? dollarHighlighter : ''}
             >
                 <Link
                     to={'/post/' + item.sys.id}
                 >
-                    {dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - {item.fields.title} - {city}, {state}
+                    {dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - {item.fields.title} - {city}, {state} - ${item.fields.cost}
                 </Link>
             </li>
         )

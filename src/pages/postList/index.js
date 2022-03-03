@@ -31,15 +31,25 @@ const PostList = (props) => {
             const city = item.fields.city === undefined ? '' : `${item.fields.city}`
             const state = item.fields.state === undefined ? '' : `${item.fields.state}`
 
+            let dollarHighlighter = ''
+            if (item.fields.cost <= 10) {
+                dollarHighlighter += 'bold '
+            }
+            if (item.fields.cost === 0) {
+                dollarHighlighter += 'red '
+            }
+
             return (
                 <li
                     key={index}
+                    
                 >
                     <Link
                         to={props.type === 'posts' ? '/post/' + item.sys.id : '/upcoming/' + item.sys.id}
+                        className={props.type === 'upcoming' ? dollarHighlighter : ''}
                     >
                         {props.type === 'upcoming' ? 
-                            `${dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - ${item.fields.title} - ${city}, ${state}` : 
+                            `${dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - ${item.fields.title} - ${city}, ${state} - $${item.fields.cost}` : 
                             `${dateFormat(item.fields.dateOfProduction, "m/d/yy")} - ${item.fields.title}`}
                     </Link>
                 </li>
@@ -50,7 +60,13 @@ const PostList = (props) => {
                 className='year-section'
                 key={index}
             >
-                <h3>{`${item} ${props.type === 'upcoming' ? 'Upcoming' : 'Posts'}`}</h3>
+                <div id='header-cont'>
+                    <h3>{`${item} ${props.type === 'upcoming' ? 'Upcoming' : 'Posts'}`}</h3>
+                    <div id='legend'>
+                        <p className='bold'>$10</p>
+                        <p className='bold red'>Free</p>
+                    </div>
+                </div>
                 <ul>
                     {yearEntries}
                 </ul>

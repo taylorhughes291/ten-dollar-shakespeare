@@ -32,6 +32,12 @@ $desktop: 1023px
   opacity: 1
   z-index: 10
 
+.bold
+  font-weight: bold
+
+.red
+  color: $red !important
+
 //////// Layouts and Styles  
 body
   background-color: $pink
@@ -230,6 +236,26 @@ body
 
       .home-title
         margin: 8px 0
+
+      #header-cont
+        display: flex
+        justify-content: space-between
+        align-items: center
+        max-width: 450px
+
+        #legend
+          display: flex
+          justify-content: space-between
+          align-items: center
+          height: 30px
+          max-width: 85px
+          width: 100%
+          border: 1px solid $black
+          border-radius: 5px
+          padding: 0 10px
+
+          *
+            margin: 0
 
       img
         max-width: 100%
