@@ -28,6 +28,9 @@ const Home = (props) => {
     })
 
     const recentUpcoming = props.upcoming.map((item, index) => {
+        const city = item.fields.city === undefined ? '' : `${item.fields.city}`
+        const state = item.fields.state === undefined ? '' : `${item.fields.state}`
+
         return (
             <li
                 key={index}
@@ -35,7 +38,7 @@ const Home = (props) => {
                 <Link
                     to={'/post/' + item.sys.id}
                 >
-                    {dateFormat(item.fields.dateOfProduction, "m/d/yy") + ' - ' + item.fields.title}
+                    {dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - {item.fields.title} - {city}, {state}
                 </Link>
             </li>
         )
@@ -75,7 +78,7 @@ const Home = (props) => {
                 </ul>
             </div>
             <div id='upcoming' className='home-section'>
-            <div className='section-header'>
+                <div className='section-header'>
                     <h3 className='home-title'>Upcoming Productions</h3>
                     <Link
                         to='/upcoming'
