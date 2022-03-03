@@ -155,16 +155,20 @@ body
 
 
 #body
-  width: 100%
   z-index: 1
   color: $black
   position: absolute
+  right: 10px
   @media screen and (max-width: $tablet)
     left: 59px
   @media screen and (min-width: $tablet)
     left: 281px
   @media screen and (min-width: $desktop)
     max-width: 950px
+
+  div#content-cont
+    display: flex
+    flex-direction: column
 
   h1, h2, h3, h4
     font-family: $grenze
@@ -213,11 +217,12 @@ body
 
   #home, #posts, #about
     width: 100%
+    flex-grow: 100
 
     .home-section, .year-section, .about-section
       padding: 0 10px 10px
       border: 1px solid $black
-      margin: 0 10px 10px 0
+      margin: 0 0 10px 0
       border-radius: 5px
       background-color: $blue
       @media screen and (min-width: $desktop)
