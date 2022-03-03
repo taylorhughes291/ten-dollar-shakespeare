@@ -182,6 +182,9 @@ const Nav = (props) => {
                         </li>
                     </ul>
                 </div>
+                <div id='img-cont'>
+                    <img src='/logo192.png' />
+                </div>
             </div>
         )
     } 
