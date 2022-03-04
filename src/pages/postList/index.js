@@ -62,10 +62,10 @@ const PostList = (props) => {
             >
                 <div id='header-cont'>
                     <h3>{`${item} ${props.type === 'upcoming' ? 'Upcoming' : 'Posts'}`}</h3>
-                    <div id='legend'>
+                    {props.type === 'upcoming' && <div id='legend'>
                         <p className='bold'>$10</p>
                         <p className='bold red'>Free</p>
-                    </div>
+                    </div>}
                 </div>
                 <ul>
                     {yearEntries}
