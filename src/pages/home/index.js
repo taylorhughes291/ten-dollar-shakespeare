@@ -47,7 +47,7 @@ const Home = (props) => {
                 <Link
                     to={'/post/' + item.sys.id}
                 >
-                    {dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - {item.fields.title} - {city}, {state} - ${item.fields.cost}
+                    {dateFormat(item.fields.dateOfProduction, "ddd - m/d/yy h:MM TT")} - {item.fields.title} - {city}, {state} - ${item.fields.cost}
                 </Link>
             </li>
         )
