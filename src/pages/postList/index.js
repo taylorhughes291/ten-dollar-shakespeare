@@ -49,7 +49,7 @@ const PostList = (props) => {
                         className={props.type === 'upcoming' ? dollarHighlighter : ''}
                     >
                         {props.type === 'upcoming' ? 
-                            `${dateFormat(item.fields.dateOfProduction, "m/d/yy h:MM TT")} - ${item.fields.title} - ${city}, ${state} - $${item.fields.cost}` : 
+                            `${dateFormat(item.fields.dateOfProduction, "ddd - m/d/yy h:MM TT")} - ${item.fields.title} - ${city}, ${state} - $${item.fields.cost}` : 
                             `${dateFormat(item.fields.dateOfProduction, "m/d/yy")} - ${item.fields.title}`}
                     </Link>
                 </li>
