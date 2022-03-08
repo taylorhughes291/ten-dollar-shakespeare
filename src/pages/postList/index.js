@@ -1,4 +1,4 @@
-import React from "react"
+import {useEffect, useState} from "react"
 import dateFormat from 'dateformat'
 import {Link} from "react-router-dom"
 import UpcomingCalendar from "../../components/upcomingCalendar"
@@ -10,7 +10,10 @@ const PostList = (props) => {
     // Constants
     /////////////////////////////
 
-    let years = [...new Set(props.entries.map((item, index) => {
+    const [displayEntries, setDisplayEntries] = useState([])
+    const [filterDisplay, setFilterDisplay] = useState('all')
+
+    let years = [...new Set(displayEntries.map((item, index) => {
         return (
             dateFormat(item.fields.dateOfProduction, 'yyyy')
         )
@@ -18,12 +21,25 @@ const PostList = (props) => {
         return new Date(b) - new Date(a)
       })
 
+
     /////////////////////////////
     // Functions
     /////////////////////////////
 
+    const handleFilter = (displayOption, unfilter, filterAmount) => {
+        setFilterDisplay(displayOption)
+        if (unfilter) {
+            setDisplayEntries(props.entries)
+        } else {
+            const filteredEntries = props.entries.filter((item, index) => {
+                return item.fields.cost <= filterAmount
+            })
+            setDisplayEntries(filteredEntries)
+        }
+    }
+
     const yearSections = years.map((item, index) => {
-        const yearEntries = props.entries.filter((item2, index2) => {
+        const yearEntries = displayEntries.filter((item2, index2) => {
             return (
                 dateFormat(item2.fields.dateOfProduction, 'yyyy') === item
             )
@@ -63,8 +79,24 @@ const PostList = (props) => {
                 <div id='header-cont'>
                     <h3>{`${item} ${props.type === 'upcoming' ? 'Upcoming' : 'Posts'}`}</h3>
                     {props.type === 'upcoming' && <div id='legend'>
-                        <p className='bold'>$10</p>
-                        <p className='bold red'>Free</p>
+                        {filterDisplay !== 'all' && <p
+                            className='pointer'
+                            onClick={() => handleFilter('all', true)}
+                        >
+                            All
+                        </p>}
+                        {filterDisplay !== 'ten' && <p 
+                            className='bold pointer'
+                            onClick={() => handleFilter('ten', false, 10)}
+                        >
+                            $10
+                        </p>}
+                        {filterDisplay !== 'free' && <p 
+                            className='bold red pointer'
+                            onClick={() => handleFilter('free', false, 0)}
+                        >
+                            Free
+                        </p>}
                     </div>}
                 </div>
                 <ul>
@@ -78,6 +110,12 @@ const PostList = (props) => {
     // Render
     /////////////////////////////
 
+    useEffect(() => {
+        if (props.entries.length > 0) {
+            setDisplayEntries(props.entries)
+        }
+    }, [props.entries])
+
     return (
         <div
             id='posts'
@@ -85,7 +123,7 @@ const PostList = (props) => {
             {props.type === 'upcoming' && 
                 <div id='calendar'>
                     <UpcomingCalendar 
-                        entries={props.entries}
+                        entries={displayEntries}
                     />
                 </div>
             }

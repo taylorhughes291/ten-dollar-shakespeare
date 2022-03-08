@@ -65,8 +65,9 @@ const Home = (props) => {
                     src='/home-1.jpeg'
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
-                <p>Welcome to Ten Dollar Shakespeare! This is a Southern California based blog centered around the appreciation, review, and information distribution of cheap local Shakespeare productions around my area. I will post all upcoming dates in which I will attend, complete with pricing, and upon viewing I will write a quick report about the production and my viewing experience.<br /><br />Long has it been proven that the happiest wine drinkers are those purchasing bottles in the range of $10-$15. As somebody who fits staunchly in that category of wine-drinker I believe that this line of thought could be applied to many other parts of life, including entertainment, and is the inspiration for this page. Thank you for your patronage and enjoy!
-</p>
+                <p>
+                    Welcome to Ten Dollar Shakespeare! This is a Southern California based blog centered around the appreciation, review, and information distribution of cheap local Shakespeare productions around my area. I will post all upcoming dates in which I will attend, complete with pricing, and upon viewing I will write a quick report about the production and my viewing experience.<br /><br />Long has it been proven that the happiest wine drinkers are those purchasing bottles in the range of $10-$15. As somebody who fits staunchly in that category of wine-drinker I believe that this line of thought could be applied to many other parts of life, including entertainment, and is the inspiration for this page. Thank you for your patronage and enjoy!
+                </p>
             </div>
             <div id='recent' className='home-section'>
                 <div className='section-header'>
