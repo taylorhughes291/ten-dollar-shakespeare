@@ -55,7 +55,8 @@ const Post = (props) => {
                     {props.type === 'upcoming' && <p>
                         <a
                             href={selectedPost.fields.website}
-                            target='_blank'
+                            target='_blank' 
+                            rel="noreferrer"
                         >Website</a>
                     </p>}
                 </div>
