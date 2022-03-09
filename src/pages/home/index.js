@@ -62,7 +62,7 @@ const Home = (props) => {
             <div id='hook' className='home-section'>
                 <h3 className='home-title'>Welcome to the filthy masses</h3>
                 <img 
-                    src='/home-1.jpeg'
+                    src='/home-1.webp'
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
                 <p>
@@ -80,7 +80,7 @@ const Home = (props) => {
                     </Link>
                 </div>
                 <img 
-                    src='/home-2.jpeg'
+                    src='/home-2.webp'
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
                 <ul>
@@ -98,7 +98,7 @@ const Home = (props) => {
                     </Link>
                 </div>
                 <img 
-                    src='/home-3.jpeg'
+                    src='/home-3.webp'
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
                 <ul>
@@ -111,7 +111,7 @@ const Home = (props) => {
 
                 </div>
                 <img 
-                    src='/home-5.jpeg'
+                    src='/home-5.webp'
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
                 <p>
@@ -151,7 +151,7 @@ const Home = (props) => {
                     </a>
                 </div>
                 <img 
-                    src='/home-4.jpeg'
+                    src='/home-4.webp'
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
                 <p>
