@@ -1,6 +1,6 @@
-import React from "react"
 import dateFormat from 'dateformat'
 import {Link} from "react-router-dom"
+import Mailchimp from 'react-mailchimp-form'
 
 const Home = (props) => {
 
@@ -105,6 +105,41 @@ const Home = (props) => {
                     {recentUpcoming}
                 </ul>
             </div>
+            <div id='email-list' className='home-section'>
+                <div className='section-header'>
+                    <h3 className='home-title'>Join Our Email List</h3>
+
+                </div>
+                <img 
+                    src='/home-5.jpeg'
+                    alt='street art of william shakespeare with a man playing atuba beside it'
+                />
+                <p>
+                    Stay up to date on any new performances added, new posts written, events organized, merchandise invented, and general Bard updates. Add your email and see what happens!
+                </p>
+                <Mailchimp 
+                    action={`https://tendollarshakespeare.${process.env.REACT_APP_MAILCHIMP_SERVER_PREFIX}.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&amp;id=${process.env.REACT_APP_MAILCHIMP_ID}`}
+                    fields={[
+                        {
+                          name: 'EMAIL',
+                          placeholder: 'hamlet@godaddy.com',
+                          type: 'email',
+                          required: true
+                        }
+                      ]}
+                      messages = {
+                        {
+                          sending: "",
+                          success: "Thank you for subscribing!",
+                          error: "An unexpected internal error has occurred.",
+                          empty: "You must write an e-mail.",
+                          duplicate: "Too many subscribe attempts for this email address",
+                          button: "Subscribe"
+                        }
+                      }
+                      className='mailchimp'
+                />
+            </div>
             <div id='tip-jar' className='home-section'>
                 <div className='section-header'>
                     <h3 className='home-title'>Tip Jar</h3>
@@ -120,7 +155,7 @@ const Home = (props) => {
                     alt='street art of william shakespeare with a man playing atuba beside it'
                 />
                 <p>
-                    If you feel so inclined, please help support this page by making a donation at the link above. Proceeds will go to the upkeep of this page, ticket and gas costs to continue writing posts, and possibly a few pints at my local bar.
+                    If you feel so inclined, please help support this page by making a donation at the link below. Proceeds will go to the upkeep of this page, ticket and gas costs to continue writing posts, and possibly a few pints at my local bar.
                 </p>
                 <a
                     href='https://www.paypal.com/donate/?hosted_button_id=T7D8K7XKUJAEN'

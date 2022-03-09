@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react"
 import {Link} from "react-router-dom"
+import {HashLink} from "react-router-hash-link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faBars } from '@fortawesome/free-solid-svg-icons'
 import dateFormat from 'dateformat'
@@ -178,6 +179,18 @@ const Nav = (props) => {
                                     </div>
                                     <div className='menu-background'></div>
                                 </a>
+                            </div>
+                        </li>
+                        <li className='menu-item'>
+                            <div className='item-wrapper'>
+                                <HashLink
+                                    to='#email-list'
+                                >
+                                    <div className='full-item'>
+                                        Email List
+                                    </div>
+                                    <div className='menu-background'></div>
+                                </HashLink>
                             </div>
                         </li>
                         <li className='menu-item'>
