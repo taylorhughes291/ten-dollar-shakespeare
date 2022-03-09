@@ -105,6 +105,31 @@ const Home = (props) => {
                     {recentUpcoming}
                 </ul>
             </div>
+            <div id='tip-jar' className='home-section'>
+                <div className='section-header'>
+                    <h3 className='home-title'>Tip Jar</h3>
+                    <a
+                        href='https://www.paypal.com/donate/?hosted_button_id=T7D8K7XKUJAEN'
+                        onClick={() => {window.scrollTo(0, 0)}}
+                    >
+                        <p>Tip Here</p>
+                    </a>
+                </div>
+                <img 
+                    src='/home-4.jpeg'
+                    alt='street art of william shakespeare with a man playing atuba beside it'
+                />
+                <p>
+                    If you feel so inclined, please help support this page by making a donation at the link above. Proceeds will go to the upkeep of this page, ticket and gas costs to continue writing posts, and possibly a few pints at my local bar.
+                </p>
+                <a
+                    href='https://www.paypal.com/donate/?hosted_button_id=T7D8K7XKUJAEN'
+                    onClick={() => {window.scrollTo(0, 0)}}
+                >
+                    <p>Click Here to go to the Tip Jar</p>
+                </a>
+                <p>(Average donation: $10.)</p>
+            </div>
         </div>
     )
 }

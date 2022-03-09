@@ -169,6 +169,19 @@ const Nav = (props) => {
                         </li>
                         <li className='menu-item'>
                             <div className='item-wrapper'>
+                                <a
+                                    href='https://www.paypal.com/donate/?hosted_button_id=T7D8K7XKUJAEN'
+                                    onClick={() => toggleMenu(true)}
+                                >
+                                    <div className='full-item'>
+                                        Tip Jar
+                                    </div>
+                                    <div className='menu-background'></div>
+                                </a>
+                            </div>
+                        </li>
+                        <li className='menu-item'>
+                            <div className='item-wrapper'>
                                 <Link
                                     to='/about'
                                     onClick={() => toggleMenu(true)}
@@ -183,7 +196,7 @@ const Nav = (props) => {
                     </ul>
                 </div>
                 <div id='img-cont'>
-                    <img src='/logo192.png' />
+                    <img src='/logo192.png' alt='shakespeare with money shaped glasses logo' />
                 </div>
             </div>
         )
