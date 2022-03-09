@@ -232,6 +232,9 @@ body
     width: 100%
     flex-grow: 100
 
+    .year-section, .about-section
+      background-color: $blue
+
     .home-section, .year-section, .about-section
       padding: 0 10px 10px
       border: 1px solid $black
@@ -239,6 +242,33 @@ body
       border-radius: 5px
       @media screen and (min-width: $desktop)
         padding-bottom: 20px
+
+      form.mailchimp
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        height: 100px
+
+        *
+          margin-bottom: 15px
+
+        input
+          font-size: 15px
+          font-family: $grenze
+
+        button
+          font-family: $lora
+          background-color: $pink
+          border: 1px solid $black
+          border-radius: 5px
+          height: 29px
+          cursor: pointer
+
+        div.msg-alert 
+          p
+            font-family: $lora
+            color: $black !important
+            margin-top: 0
 
       .home-title
         margin: 8px 0
@@ -284,6 +314,7 @@ body
         li
           list-style: none
           margin-bottom: 10px
+
     .section-header
       display: flex
       justify-content: space-between

@@ -15,8 +15,8 @@ function App() {
   /////////////////////////////
 
   let client = contentful.createClient({
-    space: process.env.REACT_APP_SPACE_KEY,
-    accessToken: process.env.REACT_APP_API_TOKEN,
+    space: process.env.REACT_APP_CONTENTFUL_SPACE_KEY,
+    accessToken: process.env.REACT_APP_CONTENTFUL_API_TOKEN,
   });
   const [entries, setEntries] = useState([])
   const [upcoming, setUpcoming] = useState([])
