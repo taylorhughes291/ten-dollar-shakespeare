@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react"
 import dateFormat from 'dateformat'
 import {Link} from "react-router-dom"
-import UpcomingCalendar from "../../components/upcomingCalendar"
+import loadable from '@loadable/component'
 
 
 const PostList = (props) => {
@@ -21,6 +21,7 @@ const PostList = (props) => {
         return new Date(b) - new Date(a)
       })
 
+    const UpcomingCalendar = loadable(() => import('../../components/upcomingCalendar'))
 
     /////////////////////////////
     // Functions
