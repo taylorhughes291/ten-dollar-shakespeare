@@ -1,6 +1,7 @@
 import React from "react"
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
+import {useNavigate} from "react-router-dom"
 
 const UpcomingCalendar = (props) => {
 
@@ -9,7 +10,8 @@ const UpcomingCalendar = (props) => {
     /////////////////////////////
 
     const localizer = momentLocalizer(moment)
-
+    const navigate = useNavigate()
+    
     /////////////////////////////
     // Functions
     /////////////////////////////
@@ -20,7 +22,8 @@ const UpcomingCalendar = (props) => {
                 {
                     title: item.fields.title,
                     start: new Date(item.fields.dateOfProduction),
-                    end: new Date(item.fields.dateOfProduction)
+                    end: new Date(item.fields.dateOfProduction),
+                    id: item.sys.id
                 }
             )
         })
@@ -33,6 +36,7 @@ const UpcomingCalendar = (props) => {
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: 500 }}
+                onSelectEvent={event => navigate(`/upcoming/${event.id}`)}
             />
             </div>
         )
