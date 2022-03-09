@@ -12,6 +12,8 @@ const PostList = (props) => {
 
     const [displayEntries, setDisplayEntries] = useState([])
     const [filterDisplay, setFilterDisplay] = useState('all')
+    const [showCalendar, setShowCalendar] = useState(false)
+    const [showMap, setShowMap] = useState(false)
 
     let years = [...new Set(displayEntries.map((item, index) => {
         return (
@@ -36,6 +38,22 @@ const PostList = (props) => {
                 return item.fields.cost <= filterAmount
             })
             setDisplayEntries(filteredEntries)
+        }
+    }
+
+    const handleShow = (type) => {
+        if (type === 'calendar') {
+            if (showCalendar) {
+                setShowCalendar(false)
+            } else {
+                setShowCalendar(true)
+            }
+        } else if (type === 'map') {
+            if (showMap) {
+                setShowMap(false)
+            } else {
+                setShowMap(true)
+            }
         }
     }
 
@@ -122,10 +140,33 @@ const PostList = (props) => {
             id='posts'
         >
             {props.type === 'upcoming' && 
-                <div id='calendar'>
-                    <UpcomingCalendar 
-                        entries={displayEntries}
-                    />
+                <div 
+                    id='calendar'
+                    className={showCalendar ? '' : 'no-padding-bottom'}
+                >
+                    <div className='section-header'>
+                        <h3>Calendar</h3>
+                        <p
+                            onClick={() => handleShow('calendar')}
+                            className={showCalendar ? 'hidden pointer' : 'pointer'}
+                        >
+                            Show
+                        </p>
+                        <p
+                            onClick={() => handleShow('calendar')}
+                            className={showCalendar ? 'pointer' : 'hidden pointer'}
+                        >
+                            Hide
+                        </p>
+                    </div>
+                    <div
+                        id='calendar-cont'
+                        className={showCalendar ? '' : 'hidden'}
+                    >
+                        <UpcomingCalendar 
+                            entries={displayEntries}
+                        />
+                    </div>
                 </div>
             }
             {yearSections}

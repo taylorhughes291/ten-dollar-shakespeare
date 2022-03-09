@@ -41,6 +41,9 @@ $desktop: 1023px
 .pointer
   cursor: pointer
 
+.no-padding-bottom
+  padding-bottom: 0 !important
+
 //////// Layouts and Styles  
 body
   background-color: $pink
@@ -232,10 +235,10 @@ body
     width: 100%
     flex-grow: 100
 
-    .year-section, .about-section
+    .year-section, .about-section, #calendar
       background-color: $blue
 
-    .home-section, .year-section, .about-section
+    .home-section, .year-section, .about-section, #calendar
       padding: 0 10px 10px
       border: 1px solid $black
       margin: 0 0 10px 0
@@ -321,7 +324,51 @@ body
       align-items: center
 
     #calendar
-      display: none
+      font-family: $lora
+
+      div.section-header
+        p
+          text-decoration: underline
+
+        p:hover
+          text-decoration: none
+
+
+      div#calendar-cont
+        margin-top: 10px
+        div.rbc-month-view
+          background-color: $pink
+          border: 1px solid $black
+          border-radius: 5px
+
+          div.rbc-event
+            background-color: $blue
+            border: 1px solid $red
+            color: $black
+
+          div.rbc-month-header
+            background-color: $yellow
+
+        div.rbc-toolbar
+          display: flex
+          flex-direction: row-reverse
+          justify-content: flex-end
+          align-items: center
+
+          span.rbc-toolbar-label
+            font-size: 25px
+            font-weight: bold
+            flex-grow: 0
+            margin-right: 15px
+
+          span.rbc-btn-group
+            background-color: $red
+            border: 1px solid $black
+            border-radius: 5px
+            font-weight: bold
+
+          span:nth-of-type(3)
+            display: none !important
 
   #posts
     img
