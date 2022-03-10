@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import dateFormat from 'dateformat'
 import {Link} from "react-router-dom"
 import loadable from '@loadable/component'
+import { useMediaQuery } from 'react-responsive'
 
 
 const PostList = (props) => {
@@ -24,6 +25,10 @@ const PostList = (props) => {
       })
 
     const UpcomingCalendar = loadable(() => import('../../components/upcomingCalendar'))
+
+    const isTabletOrDesktop = useMediaQuery({
+        query: '(min-width: 767px)'
+    })
 
     /////////////////////////////
     // Functions
@@ -139,7 +144,7 @@ const PostList = (props) => {
         <div
             id='posts'
         >
-            {props.type === 'upcoming' && 
+            {(props.type === 'upcoming' && isTabletOrDesktop) && 
                 <div 
                     id='calendar'
                     className={showCalendar ? '' : 'no-padding-bottom'}
