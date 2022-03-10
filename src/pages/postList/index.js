@@ -164,14 +164,13 @@ const PostList = (props) => {
                             Hide
                         </p>
                     </div>
-                    <div
+                    {showCalendar && <div
                         id='calendar-cont'
-                        className={showCalendar ? '' : 'hidden'}
                     >
                         <UpcomingCalendar 
                             entries={displayEntries}
                         />
-                    </div>
+                    </div>}
                 </div>
             }
             {yearSections}
