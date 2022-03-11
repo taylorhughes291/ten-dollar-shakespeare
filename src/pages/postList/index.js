@@ -16,6 +16,7 @@ const PostList = (props) => {
     const [filterDisplay, setFilterDisplay] = useState('all')
     const [showCalendar, setShowCalendar] = useState(false)
     const [showMap, setShowMap] = useState(false)
+    const [mapData, setMapData] = useState([])
 
     let years = [...new Set(displayEntries.map((item, index) => {
         return (
@@ -107,6 +108,7 @@ const PostList = (props) => {
                         <UpcomingYearEntries 
                             entries={displayEntries}
                             year={item}
+                            setMapData={setMapData}
                         />
                     }
                 </ul>
@@ -180,7 +182,7 @@ const PostList = (props) => {
                         id='map-cont'
                     >
                         <Map 
-                            entries={displayEntries}
+                            entries={mapData}
                         />
                     </div>}
                 </div>}

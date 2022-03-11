@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import dateFormat from 'dateformat'
 import { Link } from 'react-router-dom'
 
 const UpcomingYearEntries = (props) => { 
+
+    ////////////////////
+    // Constants
+    ////////////////////
     const distinctEvents = []
     for (let i = 0; i < props.entries.length; i++) {
         if (
@@ -42,6 +46,18 @@ const UpcomingYearEntries = (props) => {
             }
         )
     })
+    ////////////////////
+    // Functions
+    ////////////////////
+
+    useEffect(() => {
+        props.setMapData(distinctEventsFormatted)
+    }, [])
+
+    ////////////////////
+    // Render
+    ////////////////////
+
     return distinctEventsFormatted.filter((item2, index) => {
         return item2.datesOfProduction.some((item3, index) => {
             return dateFormat(item3.date, 'yyyy') === props.year

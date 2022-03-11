@@ -1,4 +1,7 @@
 import dateFormat from 'dateformat'
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faX } from '@fortawesome/free-solid-svg-icons'
 
 const Marker = (props) => {
     /////////////////
@@ -23,8 +26,8 @@ const Marker = (props) => {
         const { place } = props;
         const infoWindowStyle = {
           position: 'relative',
-          bottom: 150,
-          left: '-45px',
+          bottom: 100,
+          left: '30px',
           width: 220,
           backgroundColor: 'white',
           boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
@@ -34,24 +37,49 @@ const Marker = (props) => {
         };
       
         return (
-          <div style={infoWindowStyle}>
-            <div style={{ fontSize: 16 }}>
-              {place.title}
+          <div 
+            style={infoWindowStyle}
+          >
+            <div 
+              style={{ fontSize: 16 }}
+              className='marker-header'
+            >
+              {`${place.title} - $${place.cost}`}
+              <FontAwesomeIcon
+                style={{cursor: 'pointer'}}
+                icon={faX}
+                color='grey'
+                size='x'
+                onClick={() => props.setMarker('')}
+              />
+            </div>
+            <div 
+              style={{ fontSize: 14 }}
+              className='marker-text'
+            >
+              {place.datesOfProduction.map((item, index) => {
+                return (
+                  <Link
+                    to={`/upcoming/${item.id}`}
+                  >
+                    <p 
+                      style={{ color: 'grey' }}
+                      className='marker'
+                    >
+                      {dateFormat(item.date, 'ddd m/d/yy h:MM TT')}
+                    </p>
+                  </Link>
+                )
+              })
+              }
             </div>
             <div style={{ fontSize: 14 }}>
-              <span style={{ color: 'grey' }}>
-                {dateFormat(place.dateOfProduction, 'ddd m/d/yy h:MM TT')}
-              </span>
-            </div>
-            <div style={{ fontSize: 14 }}>
-              <span style={{ color: 'grey' }}>
-                {`${place.address}, ${place.city} ${place.state} ${place.zip}`}
-              </span>
-            </div>
-            <div style={{ fontSize: 14 }}>
-              <span style={{ color: 'grey' }}>
-                {`$${place.cost}`}
-              </span>
+              <p 
+                style={{ color: 'grey' }}
+                className='marker'
+              >
+                {`${place.city}, ${place.state}`}
+              </p>
             </div>
           </div>
         );
@@ -68,7 +96,11 @@ const Marker = (props) => {
             style={markerStyle}
             onClick={() => props.setMarker(props.id)}
         />
-        {props.show && <InfoWindow place={props.place} />}
+        {props.show && 
+          <InfoWindow 
+            place={props.place}
+            setMarker={props.setMarker}
+          />}
       </>
     );
 };
