@@ -64,41 +64,106 @@ const PostList = (props) => {
     }
 
     const yearSections = years.map((item, index) => {
-        const yearEntries = displayEntries.filter((item2, index2) => {
+
+        const PostYearEntries = () => {
             return (
-                dateFormat(item2.fields.dateOfProduction, 'yyyy') === item
+                displayEntries.filter((item2, index2) => {
+                    return (
+                        dateFormat(item2.fields.dateOfProduction, 'yyyy') === item
+                    )
+                }).map((item, index) => {
+                    return (
+                        <li
+                            key={index}
+                            
+                        >
+                            <Link
+                                to={'/post/' + item.sys.id}
+                            >
+                                {`${dateFormat(item.fields.dateOfProduction, "m/d/yy")} - ${item.fields.title}`}
+                            </Link>
+                        </li>
+                    )
+                })
             )
-        }).map((item, index) => {
-            const city = item.fields.city === undefined ? '' : `${item.fields.city}`
-            const state = item.fields.state === undefined ? '' : `${item.fields.state}`
+        }
 
-            let dollarHighlighter = ''
-            if (item.fields.cost <= 10) {
-                dollarHighlighter += 'bold '
+        const distinctEvents = []
+        for (let i = 0; i < displayEntries.length; i++) {
+            if (
+                !distinctEvents.some((item2, index) => {
+                    return item2.fields.id === displayEntries[i].fields.id
+                })
+            ) {
+                distinctEvents.push(displayEntries[i])
             }
-            if (item.fields.cost === 0) {
-                dollarHighlighter += 'red '
-            }
-
+        }
+        const distinctEventsFormatted = distinctEvents.map((item2, index) => {
             return (
-                <li
-                    key={index}
-                    
-                >
-                    <Link
-                        to={props.type === 'posts' ? '/post/' + item.sys.id : '/upcoming/' + item.sys.id}
-                        className={props.type === 'upcoming' ? dollarHighlighter : ''}
-                    >
-                        {props.type === 'upcoming' ? 
-                            `${dateFormat(item.fields.dateOfProduction, "ddd - m/d/yy h:MM TT")} - ${item.fields.title} - ${city}, ${state} - $${item.fields.cost}` : 
-                            `${dateFormat(item.fields.dateOfProduction, "m/d/yy")} - ${item.fields.title}`}
-                    </Link>
-                </li>
+                {
+                    id: item2.fields.id,
+                    address: item2.fields.address,
+                    city:item2.fields.city,
+                    state: item2.fields.state,
+                    zip: item2.fields.zip,
+                    cost: item2.fields.cost,
+                    productionCompany: item2.fields.productionCompany,
+                    theaterLocation: item2.fields.theaterLocation,
+                    theaterName: item2.fields.theaterName,
+                    title: item2.fields.title,
+                    website: item2.fields.website,
+                    datesOfProduction: displayEntries.filter((item3, index) => {
+                        return (
+                            item3.fields.id === item2.fields.id
+                        )
+                    }).map((item3, index) => {
+                        return (
+                            {
+                                date: item3.fields.dateOfProduction,
+                                id: item3.sys.id
+                            }
+                        )
+                    })
+                }
             )
         })
+        const UpcomingYearEntries = () => { 
+            return distinctEventsFormatted.filter((item2, index) => {
+                return item2.datesOfProduction.some((item3, index) => {
+                    return dateFormat(item3.date, 'yyyy') === item
+                })
+            }).map((item2, index) => {
+                return (
+                    <li
+                        key={index}
+                    >
+                        <h4
+                            className={item2.cost === 0 ? 'red' : ''}
+                        >
+                            {`${item2.title} - ${item2.city}, ${item2.state} - $${item2.cost}`}
+                        </h4>
+                        <ul>
+                            {item2.datesOfProduction.map((item3, index) => {
+                                return (
+                                    <Link
+                                        to={'/upcoming/' + item3.id}
+                                        key={index}
+                                    >
+                                        <li
+                                            className="date-item"
+                                        >{dateFormat(item3.date, 'ddd - m/d/yy h:MM TT')}</li>
+                                    </Link>
+                                )
+                            })}
+                        </ul>
+                    </li>
+                )
+            })
+        }
+
         return (
             <div 
-                className='year-section'
+                className={props.type === 'upcoming' ? 'upcoming year-section' : 'year-section'}
                 key={index}
             >
                 <div id='header-cont'>
@@ -124,8 +189,11 @@ const PostList = (props) => {
                         </p>}
                     </div>}
                 </div>
-                <ul>
-                    {yearEntries}
+                <ul
+                    className='year-list'
+                >
+                    {props.type === 'posts' && <PostYearEntries />}
+                    {props.type === 'upcoming' && <UpcomingYearEntries />}
                 </ul>
             </div>
         )

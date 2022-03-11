@@ -192,6 +192,9 @@ body
   h3
     font-size: 32px
 
+  h4
+    font-size: 22px
+
   p, li
     font-family: $lora
     @media screen and (min-width: $desktop)
@@ -278,9 +281,10 @@ body
 
       #header-cont
         display: flex
-        justify-content: space-between
+        justify-content: flex-start
         align-items: center
-        max-width: 450px
+        gap: 20px
+        // max-width: 450px
 
         #legend
           display: flex
@@ -373,3 +377,10 @@ body
   #posts
     img
       float: right
+
+    .upcoming
+      ul.year-list
+        margin: 10px 0 0 10px
+
+      li.date-item
+        margin: 3px 0 0 10px
