@@ -63,12 +63,21 @@ const UpcomingYearEntries = (props) => {
             return dateFormat(item3.date, 'yyyy') === props.year
         })
     }).map((item2, index) => {
+
+        let upcomingStyle = ''
+        if (item2.cost <= 10) {
+            upcomingStyle += 'bold '
+        }
+        if (item2.cost === 0) {
+            upcomingStyle += 'red'
+        }
+
         return (
             <li
                 key={index}
             >
                 <h4
-                    className={item2.cost === 0 ? 'red' : ''}
+                    className={upcomingStyle}
                 >
                     {`${item2.title} - ${item2.city}, ${item2.state} - $${item2.cost}`}
                 </h4>

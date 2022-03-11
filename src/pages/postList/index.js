@@ -82,13 +82,13 @@ const PostList = (props) => {
                             All
                         </p>}
                         {filterDisplay !== 'ten' && <p 
-                            className='bold pointer'
+                            className='pointer'
                             onClick={() => handleFilter('ten', false, 10)}
                         >
                             $10
                         </p>}
                         {filterDisplay !== 'free' && <p 
-                            className='bold red pointer'
+                            className='red pointer'
                             onClick={() => handleFilter('free', false, 0)}
                         >
                             Free
