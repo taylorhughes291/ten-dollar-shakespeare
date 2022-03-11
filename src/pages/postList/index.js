@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import dateFormat from 'dateformat'
 import {Link} from "react-router-dom"
 import loadable from '@loadable/component'
+import { useMediaQuery } from 'react-responsive'
 
 
 const PostList = (props) => {
@@ -24,6 +25,11 @@ const PostList = (props) => {
       })
 
     const UpcomingCalendar = loadable(() => import('../../components/upcomingCalendar'))
+    const Map = loadable(() => import('../../components/map'))
+
+    const isTabletOrDesktop = useMediaQuery({
+        query: '(min-width: 767px)'
+    })
 
     /////////////////////////////
     // Functions
@@ -139,7 +145,7 @@ const PostList = (props) => {
         <div
             id='posts'
         >
-            {props.type === 'upcoming' && 
+            {(props.type === 'upcoming' && isTabletOrDesktop) && 
                 <div 
                     id='calendar'
                     className={showCalendar ? '' : 'no-padding-bottom'}
@@ -159,16 +165,42 @@ const PostList = (props) => {
                             Hide
                         </p>
                     </div>
-                    <div
+                    {showCalendar && <div
                         id='calendar-cont'
-                        className={showCalendar ? '' : 'hidden'}
                     >
                         <UpcomingCalendar 
                             entries={displayEntries}
                         />
+                    </div>}
+                </div>}
+            {props.type === 'upcoming' && 
+                <div 
+                    id='map'
+                    className={showMap ? '' : 'no-padding-bottom'}
+                >
+                    <div className='section-header'>
+                        <h3>Map</h3>
+                        <p
+                            onClick={() => handleShow('map')}
+                            className={showMap ? 'hidden pointer' : 'pointer'}
+                        >
+                            Show
+                        </p>
+                        <p
+                            onClick={() => handleShow('map')}
+                            className={showMap ? 'pointer' : 'hidden pointer'}
+                        >
+                            Hide
+                        </p>
                     </div>
-                </div>
-            }
+                    {showMap && <div
+                        id='map-cont'
+                    >
+                        <Map 
+                            entries={displayEntries}
+                        />
+                    </div>}
+                </div>}
             {yearSections}
         </div>
     )
