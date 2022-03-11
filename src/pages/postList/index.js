@@ -25,6 +25,7 @@ const PostList = (props) => {
       })
 
     const UpcomingCalendar = loadable(() => import('../../components/upcomingCalendar'))
+    const Map = loadable(() => import('../../components/map'))
 
     const isTabletOrDesktop = useMediaQuery({
         query: '(min-width: 767px)'
@@ -171,8 +172,35 @@ const PostList = (props) => {
                             entries={displayEntries}
                         />
                     </div>}
-                </div>
-            }
+                </div>}
+            {props.type === 'upcoming' && 
+                <div 
+                    id='map'
+                    className={showMap ? '' : 'no-padding-bottom'}
+                >
+                    <div className='section-header'>
+                        <h3>Map</h3>
+                        <p
+                            onClick={() => handleShow('map')}
+                            className={showMap ? 'hidden pointer' : 'pointer'}
+                        >
+                            Show
+                        </p>
+                        <p
+                            onClick={() => handleShow('map')}
+                            className={showMap ? 'pointer' : 'hidden pointer'}
+                        >
+                            Hide
+                        </p>
+                    </div>
+                    {showMap && <div
+                        id='map-cont'
+                    >
+                        <Map 
+                            entries={displayEntries}
+                        />
+                    </div>}
+                </div>}
             {yearSections}
         </div>
     )
