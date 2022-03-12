@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react"
 import dateFormat from 'dateformat'
-import {Link} from "react-router-dom"
 import loadable from '@loadable/component'
 import { useMediaQuery } from 'react-responsive'
+import PostYearEntries from "../../components/postYearEntries"
+import UpcomingYearEntries from "../../components/upcomingYearEntries"
 
 
 const PostList = (props) => {
@@ -15,6 +16,7 @@ const PostList = (props) => {
     const [filterDisplay, setFilterDisplay] = useState('all')
     const [showCalendar, setShowCalendar] = useState(false)
     const [showMap, setShowMap] = useState(false)
+    const [mapData, setMapData] = useState([])
 
     let years = [...new Set(displayEntries.map((item, index) => {
         return (
@@ -64,41 +66,10 @@ const PostList = (props) => {
     }
 
     const yearSections = years.map((item, index) => {
-        const yearEntries = displayEntries.filter((item2, index2) => {
-            return (
-                dateFormat(item2.fields.dateOfProduction, 'yyyy') === item
-            )
-        }).map((item, index) => {
-            const city = item.fields.city === undefined ? '' : `${item.fields.city}`
-            const state = item.fields.state === undefined ? '' : `${item.fields.state}`
 
-            let dollarHighlighter = ''
-            if (item.fields.cost <= 10) {
-                dollarHighlighter += 'bold '
-            }
-            if (item.fields.cost === 0) {
-                dollarHighlighter += 'red '
-            }
-
-            return (
-                <li
-                    key={index}
-                    
-                >
-                    <Link
-                        to={props.type === 'posts' ? '/post/' + item.sys.id : '/upcoming/' + item.sys.id}
-                        className={props.type === 'upcoming' ? dollarHighlighter : ''}
-                    >
-                        {props.type === 'upcoming' ? 
-                            `${dateFormat(item.fields.dateOfProduction, "ddd - m/d/yy h:MM TT")} - ${item.fields.title} - ${city}, ${state} - $${item.fields.cost}` : 
-                            `${dateFormat(item.fields.dateOfProduction, "m/d/yy")} - ${item.fields.title}`}
-                    </Link>
-                </li>
-            )
-        })
         return (
             <div 
-                className='year-section'
+                className={props.type === 'upcoming' ? 'upcoming year-section' : 'year-section'}
                 key={index}
             >
                 <div id='header-cont'>
@@ -111,21 +82,35 @@ const PostList = (props) => {
                             All
                         </p>}
                         {filterDisplay !== 'ten' && <p 
-                            className='bold pointer'
+                            className='pointer'
                             onClick={() => handleFilter('ten', false, 10)}
                         >
                             $10
                         </p>}
                         {filterDisplay !== 'free' && <p 
-                            className='bold red pointer'
+                            className='red pointer'
                             onClick={() => handleFilter('free', false, 0)}
                         >
                             Free
                         </p>}
                     </div>}
                 </div>
-                <ul>
-                    {yearEntries}
+                <ul
+                    className='year-list'
+                >
+                    {props.type === 'posts' && 
+                        <PostYearEntries 
+                            entries={displayEntries}
+                            year={item}
+                        />
+                    }
+                    {props.type === 'upcoming' && 
+                        <UpcomingYearEntries 
+                            entries={displayEntries}
+                            year={item}
+                            setMapData={setMapData}
+                        />
+                    }
                 </ul>
             </div>
         )
@@ -197,7 +182,7 @@ const PostList = (props) => {
                         id='map-cont'
                     >
                         <Map 
-                            entries={displayEntries}
+                            entries={mapData}
                         />
                     </div>}
                 </div>}

@@ -33,7 +33,7 @@ $desktop: 1023px
   z-index: 10
 
 .bold
-  font-weight: bold
+  font-weight: 400 !important
 
 .red
   color: $red !important
@@ -192,6 +192,10 @@ body
   h3
     font-size: 32px
 
+  h4
+    font-size: 22px
+    font-weight: 300
+
   p, li
     font-family: $lora
     @media screen and (min-width: $desktop)
@@ -278,9 +282,10 @@ body
 
       #header-cont
         display: flex
-        justify-content: space-between
+        justify-content: flex-start
         align-items: center
-        max-width: 450px
+        gap: 20px
+        // max-width: 450px
 
         #legend
           display: flex
@@ -292,6 +297,7 @@ body
           border: 1px solid $black
           border-radius: 5px
           padding: 0 10px
+          font-weight: bold
 
           *
             margin: 0
@@ -333,6 +339,14 @@ body
         p:hover
           text-decoration: none
 
+      div.marker-header
+        display: flex
+        justify-content: space-between
+      div.marker-text
+        margin: 3px 0 5px 5px
+      p.marker
+        margin: 2px 0 0
+
 
       div#calendar-cont
         margin-top: 10px
@@ -373,3 +387,10 @@ body
   #posts
     img
       float: right
+
+    .upcoming
+      ul.year-list
+        margin: 10px 0 0 10px
+
+      li.date-item
+        margin: 3px 0 0 10px
